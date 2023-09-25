@@ -19,14 +19,11 @@ app.set('view engine','ejs');
 //Router
 app.use('/', require('./server/routes/index'));
 
-
-// app.get('/',function(req , res){
-//     const locals ={
-//         title:'NodeJS Notes',
-//         description:" NodeJS Notes App"
-//     }
-//     res.render('index',locals);
-// });
+//Handle 404
+app.get('*', function(req , res){
+    // res.status(404).send('404 Page Not Found');
+    res.status(404).render('404');
+})
 
 app.listen(port, ()=>{
     console.log(`App listening on port ${port}`);
