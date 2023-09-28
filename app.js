@@ -11,6 +11,7 @@ app.use(express.json());
 
 //Static files
 app.use(express.static('public'));
+
 //template Engine
 app.use(expressLayouts);
 app.set('layout', './layouts/main');
@@ -18,6 +19,7 @@ app.set('view engine','ejs');
 
 //Router
 app.use('/', require('./server/routes/index'));
+app.use('/', require('./server/routes/dashboard'));
 
 //Handle 404
 app.get('*', function(req , res){
