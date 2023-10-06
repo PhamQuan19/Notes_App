@@ -35,6 +35,24 @@ router.get('/login-failure', (req, res) => {
     res.send('Something went wrong...');
   });
   
+// Giữ nguyên dữ liệu người dùng sau khi xác thực thành công
+passport.serializeUser(function (user, done) {
+    done(null, user.id);
+});
+
+// Truy xuất dữ liệu người dùng từ section.
+// Original Code
+passport.deserializeUser(function (id, done) {
+  User.findById(id, function (err, user) {
+    done(err, user);
+  });
+});
+
+
+
+
+
+
 
 
 
